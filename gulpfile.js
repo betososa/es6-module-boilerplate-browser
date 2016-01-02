@@ -61,7 +61,7 @@ gulp.task('serve', ['browserify'], () => {
     },
   });
 
-  gulp.watch(['test/**/*.js']).on('change', reload);
+  gulp.watch(['test/**/*.js', 'server/index.html']).on('change', reload);
 });
 
 // Start developing the module
