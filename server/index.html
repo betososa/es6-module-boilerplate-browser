@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="">
+  <head>
+    <meta charset="utf-8">
+    <title>Module Preview</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/src/style.css" />
+    <link rel="stylesheet" href="/mocha/mocha.css" />
+    <style type="text/css">
+      .blanket.bl-title {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Mocha layout -->
+    <div id="mocha"></div>
+    <div id="messages"></div>
+    <div id="fixtures"></div>
+
+    <!-- Testing framework -->
+    <script src="/mocha/mocha.js"></script>
+    <script src="/chai/chai.js"></script>
+    <script src="/chai-jq/chai-jq.js"></script>
+    <script data-cover-flags="debug" data-cover-only="src/" src="/vendor/blanket.min.js"></script>
+    <script src="/vendor/mocha-blanket.js"></script>
+    <script>
+      mocha.setup('bdd');
+    </script>
+
+    <!-- Module -->
+    <script src="/src/index.js"></script>
+
+    <!-- Spec -->
+    <script src="/spec/test1.js"></script>
+  </body>
+</html>
