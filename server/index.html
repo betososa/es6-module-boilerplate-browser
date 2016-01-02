@@ -23,6 +23,10 @@
     <script src="/mocha/mocha.js"></script>
     <script src="/chai/chai.js"></script>
     <script src="/chai-jq/chai-jq.js"></script>
+    <script>
+      const expect = chai.expect;
+      expect(true).to.equal(!!true);
+    </script>
     <script data-cover-only="src/" src="/vendor/blanket.min.js"></script>
     <script src="/vendor/mocha-blanket.js"></script>
     <script>

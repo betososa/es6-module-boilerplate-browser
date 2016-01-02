@@ -9,6 +9,7 @@
     "func-names": 0
   },
   "globals": {
+    "expect": true,
     "chai": true
   }
 }

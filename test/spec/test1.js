@@ -1,5 +1,3 @@
-const expect = chai.expect;
-
 describe('tester', function () {
   it('should execute the tester function', function () {
     tester();
