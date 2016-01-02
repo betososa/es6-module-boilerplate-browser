@@ -31,6 +31,14 @@
     <script src="/vendor/mocha-blanket.js"></script>
     <script>
       mocha.setup('bdd');
+      mocha.suite.afterAll(function () {
+        setTimeout(function () {
+          const percent = Number(document.querySelectorAll('.bl-cl.rs')[2].innerHTML.split(' ')[0]);
+          if (percent > 90) {
+            console.log('SUCCESS');
+          }
+        }, 0);
+      });
     </script>
 
     <!-- Module -->
