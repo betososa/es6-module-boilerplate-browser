@@ -21,5 +21,5 @@ reload automatically and run the tests and show coverage information.
 How can I add more specs?
 ```sh
 Just create another .js file in the test/spec folder
-and also include it on the bottom of the server/index.html file
+and also include it on the bottom of the server/index.html file.
 ```
