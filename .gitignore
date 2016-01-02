@@ -30,3 +30,4 @@ node_modules
 dist
 
 # Temporary building files
+server/src
