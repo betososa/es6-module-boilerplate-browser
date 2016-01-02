@@ -1,0 +1,19 @@
+{
+  "name": "es6-module-boilerplate-browser",
+  "version": "1.0.0",
+  "description": "bundled and tested es6 module development and distribution boilerplate for the web/html/browser",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "gulp test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://elgubenis@github.com/elgubenis/es6-module-boilerplate-browser.git"
+  },
+  "author": "Linus Gubenis",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/elgubenis/es6-module-boilerplate-browser/issues"
+  },
+  "homepage": "https://github.com/elgubenis/es6-module-boilerplate-browser#readme"
+}
