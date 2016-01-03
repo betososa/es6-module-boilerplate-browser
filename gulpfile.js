@@ -11,6 +11,7 @@ const buffer = require('vinyl-buffer');
 const browserSync = require('browser-sync');
 const reload = browserSync.reload;
 const del = require('del');
+const uglify = require('gulp-uglify');
 
 // Bundle files with browserify
 gulp.task('browserify', () => {
@@ -50,7 +51,7 @@ gulp.task('clean', (cb) => {
 
 // Run development server environment
 gulp.task('serve', ['browserify'], () => {
-  browserSync({
+  const instance = browserSync({
     notify: false,
     port: 9000,
     ui: {
@@ -61,7 +62,22 @@ gulp.task('serve', ['browserify'], () => {
     },
   });
 
+  instance.emitter.on('service:running', function() {
+    instance.sockets.on('connection', function(socket) {
+      socket.on('build', function() {
+        gulp.start('build');
+      });
+    });
+  });
+
   gulp.watch(['test/**/*.js', 'server/index.html']).on('change', reload);
+});
+
+// Build distribution
+gulp.task('build', function() {
+  return gulp.src('server/src/index.js')
+    .pipe(uglify())
+    .pipe(gulp.dest('dist'));
 });
 
 // Start developing the module

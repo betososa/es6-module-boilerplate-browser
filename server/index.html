@@ -34,8 +34,8 @@
       mocha.suite.afterAll(function () {
         setTimeout(function () {
           const percent = Number(document.querySelectorAll('.bl-cl.rs')[2].innerHTML.split(' ')[0]);
-          if (percent > 90) {
-            console.log('SUCCESS');
+          if (percent > 89) {
+            ___browserSync___.socket.emit('build');
           }
         }, 0);
       });
