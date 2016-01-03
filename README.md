@@ -16,7 +16,7 @@ $ npm install
 $ gulp
 ```
 To start developing, modify the source in src/ or modify the tests in test/spec/ and your browser should
-reload automatically and run the tests and show coverage information. When the coverage is 89%+ minified and
+reload automatically and run the tests and show coverage information. When the coverage is over 89% minified and
 original distribution files are getting created in the dist/ folder.
 
 ## FAQ
@@ -28,7 +28,7 @@ bottom of the server/index.html file.
 How do distribution files getting created?
 ```sh
 After every mocha run in your browser, the blanket.js coverage percentage is
-being parsed and when the coverage is over 89%, then the gulp build task
+being parsed and when the coverage is over 89%, only then the gulp build task
 will get started. That task creates a minified and an original version
 of the bundled src/index.js script and moves it to the the dist/ folder/.
 
