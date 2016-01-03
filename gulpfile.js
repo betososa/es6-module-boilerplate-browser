@@ -11,7 +11,7 @@ const buffer = require('vinyl-buffer');
 const browserSync = require('browser-sync');
 const reload = browserSync.reload;
 const del = require('del');
-const uglify = require('gulp-uglify');
+const copy = require('gulp-copy');
 
 // Bundle files with browserify
 gulp.task('browserify', () => {
@@ -75,9 +75,12 @@ gulp.task('serve', ['browserify'], () => {
 
 // Build distribution
 gulp.task('build', function() {
+  gulp.src('server/src/index.js').pipe(gulp.dest('dist'))
   return gulp.src('server/src/index.js')
-    .pipe(uglify())
+    .pipe($.uglify())
+    .pipe($.rename('index.min.js'))
     .pipe(gulp.dest('dist'));
+
 });
 
 // Start developing the module

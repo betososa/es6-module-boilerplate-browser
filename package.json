@@ -2,7 +2,7 @@
   "name": "es6-module-boilerplate-browser",
   "version": "1.0.0",
   "description": "bundled and tested es6 module development and distribution boilerplate for the web/html/browser",
-  "main": "dist/index.js",
+  "main": "dist/index.min.js",
   "scripts": {
     "test": "gulp test"
   },
@@ -27,6 +27,7 @@
     "gulp": "^3.9.0",
     "gulp-cache": "^0.4.1",
     "gulp-load-plugins": "^1.1.0",
+    "gulp-rename": "^1.2.2",
     "gulp-sourcemaps": "^1.6.0",
     "gulp-uglify": "^1.5.1",
     "gulp-util": "^3.0.7",
