@@ -38,9 +38,10 @@ What benefits do I get from running the tests in a real Browser?
 ```sh
 Doing unit tests with JSDom or PhantomJS overcomplicates things alot, you'd
 also have to take care of more files and code to get up and running.
-By opening tests in a real Browser though you can also cover
-real world compatibility at an instance.
+
+By opening tests in a real Browser though, you can just pretend you are
+someone who wants to use the module and implement it just like documented.
 
 And finally. you can use the same Browser to evaluate your front-end
-modules visual aspects directly, without having an extra step for that.
+modules visual aspects directly while developing, without having an extra step for that.
 ```
