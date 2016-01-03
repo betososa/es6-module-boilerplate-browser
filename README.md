@@ -1,5 +1,5 @@
 # es6-module-boilerplate-browser
-This Boilerplate helps to create tested and bundled es6-transpiled front-end modules for the Browser.
+This Boilerplate helps to create bundled and tested, es6-transpiled front-end modules for the Browser.
 
 ## Features
 - bundled using browserify
