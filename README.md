@@ -6,6 +6,7 @@ This Boilerplate helps to create tested and bundled es6-transpiled front-end mod
 - es6 with babelify transform (includes sourcemaps for development)
 - unit testing, using your browser, mocha & chai
 - in-browser coverage information powered by Blanket.JS
+- includes hbsfy transform to pre-compile Handlebars templates and allow just requiring them
 
 ## How to get started
 ```sh
