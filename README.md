@@ -1,9 +1,9 @@
 # es6-module-boilerplate-browser
-bundled and tested es6 module development and distribution boilerplate for the web/html/browser
+This Boilerplate helps to create tested and bundled es6-transpiled front-end modules for the Browser.
 
 ## Features
-- es6 syntax and features, using browserify transform babelify (with sourcemaps for development)
-- bundling, using browserify
+- bundled using browserify
+- es6 with babelify transform (includes sourcemaps for development)
 - unit testing, using your browser, mocha & chai
 - in-browser coverage information powered by Blanket.JS
 
@@ -14,19 +14,20 @@ $ cd es6-module-boilerplate-browser/
 $ npm install
 $ gulp
 ```
-Now modify the source in src/ or modify the tests in test/spec/ and your browser should
-reload automatically and run the tests and show coverage information.
+To start developing, modify the source in src/ or modify the tests in test/spec/ and your browser should
+reload automatically and run the tests and show coverage information. When the coverage is 89%+ minified and
+original distribution files are getting created in the dist/ folder.
 
 ## FAQ
 How can I add more specs?
 ```sh
-Just create another .js file in the test/spec folder
-and also include it on the bottom of the server/index.html file.
+Create another .js file in the test/spec folder
+and require it on the bottom of the server/index.html file.
 ```
-How does the distribution files are getting created?
+How do distribution files getting created?
 ```sh
-After every mocha run, the Blanket coverage percentage is
-being parsed and when the coverage is 89%+ then the gulp build task
-will get started, that task creates a minified and original version
-of the script and moves it to the the dist/ folder, ready for publish!
+After every mocha run in your browser, the blanket.js coverage percentage is
+being parsed and when the coverage is over 89%, then the gulp build task
+will get started. That task creates a minified and an original version
+of the bundled src/index.js script and moves it to the the dist/ folder, ready for publish!
 ```
