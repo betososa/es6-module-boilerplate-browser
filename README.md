@@ -23,3 +23,10 @@ How can I add more specs?
 Just create another .js file in the test/spec folder
 and also include it on the bottom of the server/index.html file.
 ```
+How does the distribution files are getting created?
+```sh
+After every mocha run, the Blanket coverage percentage is
+being parsed and when the coverage is 89%+ then the gulp build task
+will get started, that task creates a minified and original version
+of the script and moves it to the the dist/ folder, ready for publish!
+```
