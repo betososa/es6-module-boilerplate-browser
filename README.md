@@ -21,13 +21,15 @@ original distribution files are getting created in the dist/ folder.
 ## FAQ
 How can I add more specs?
 ```sh
-Create another .js file in the test/spec folder
-and require it on the bottom of the server/index.html file.
+Create another .js file in the test/spec folder and require it on the
+bottom of the server/index.html file.
 ```
 How do distribution files getting created?
 ```sh
 After every mocha run in your browser, the blanket.js coverage percentage is
 being parsed and when the coverage is over 89%, then the gulp build task
 will get started. That task creates a minified and an original version
-of the bundled src/index.js script and moves it to the the dist/ folder, ready for publish!
+of the bundled src/index.js script and moves it to the the dist/ folder/.
+
+Ready for publish!
 ```
