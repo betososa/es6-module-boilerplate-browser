@@ -34,7 +34,7 @@ of the bundled src/index.js script and moves it to the the dist/ folder/.
 
 Ready for publish!
 ```
-What benefits do I get from running the tests in a real Browser?
+What are the benefits from running unit tests in a Browser?
 ```sh
 Doing unit tests with JSDom or PhantomJS overcomplicates things alot, you'd
 also have to take care of more files and code to get up and running.
