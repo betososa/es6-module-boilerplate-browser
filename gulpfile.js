@@ -11,7 +11,6 @@ const buffer = require('vinyl-buffer');
 const browserSync = require('browser-sync');
 const reload = browserSync.reload;
 const del = require('del');
-const copy = require('gulp-copy');
 
 // Bundle files with browserify
 gulp.task('browserify', () => {
