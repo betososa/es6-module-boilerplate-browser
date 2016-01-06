@@ -11,6 +11,8 @@ const buffer = require('vinyl-buffer');
 const browserSync = require('browser-sync');
 const reload = browserSync.reload;
 const del = require('del');
+const sass = require('gulp-sass');
+const sourcemaps = require('gulp-sourcemaps')
 
 // Bundle files with browserify
 gulp.task('browserify', () => {
@@ -41,6 +43,16 @@ gulp.task('browserify', () => {
   rebundle();
 });
 
+// Compile sass into css
+gulp.task('sass', () => {
+  gulp.src('./src/style.scss')
+    .pipe(sourcemaps.init())
+    .pipe(sass.sync().on('error', sass.logError))
+    .pipe(sass().on('error', sass.logError))
+    .pipe(sourcemaps.write('.'))
+    .pipe(gulp.dest('./server/src'));
+})
+
 // Clean output directory and cache
 gulp.task('clean', (cb) => {
   del(['server/src', 'dist']).then(() => {
@@ -49,7 +61,7 @@ gulp.task('clean', (cb) => {
 });
 
 // Run development server environment
-gulp.task('serve', ['browserify'], () => {
+gulp.task('serve', ['browserify', 'sass'], () => {
   const instance = browserSync({
     notify: false,
     port: 9000,
@@ -69,17 +81,24 @@ gulp.task('serve', ['browserify'], () => {
     });
   });
 
-  gulp.watch(['test/**/*.js', 'server/index.html']).on('change', reload);
+  gulp.watch(['test/**/*.js', 'server/src/**/*.css','server/index.html']).on('change', reload);
 });
+
+gulp.watch(['src/**/*.scss',], ['sass']);
 
 // Build distribution
 gulp.task('build', function() {
   gulp.src('server/src/index.js').pipe(gulp.dest('dist'))
+  gulp.src('./src/style.scss')
+    .pipe(sourcemaps.init())
+    .pipe(sass.sync().on('error', sass.logError))
+    .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
+    .pipe(sourcemaps.write('.'))
+    .pipe(gulp.dest('dist'));
   return gulp.src('server/src/index.js')
     .pipe($.uglify())
     .pipe($.rename('index.min.js'))
     .pipe(gulp.dest('dist'));
-
 });
 
 // Start developing the module
