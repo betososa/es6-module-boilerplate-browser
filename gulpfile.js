@@ -12,7 +12,6 @@ const browserSync = require('browser-sync');
 const reload = browserSync.reload;
 const del = require('del');
 const sass = require('gulp-sass');
-const sourcemaps = require('gulp-sourcemaps')
 
 // Bundle files with browserify
 gulp.task('browserify', () => {
@@ -46,10 +45,8 @@ gulp.task('browserify', () => {
 // Compile sass into css
 gulp.task('sass', () => {
   gulp.src('./src/style.scss')
-    .pipe(sourcemaps.init())
     .pipe(sass.sync().on('error', sass.logError))
     .pipe(sass().on('error', sass.logError))
-    .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest('./server/src'));
 })
 
@@ -88,13 +85,13 @@ gulp.watch(['src/**/*.scss',], ['sass']);
 
 // Build distribution
 gulp.task('build', function() {
-  gulp.src('server/src/index.js').pipe(gulp.dest('dist'))
+
   gulp.src('./src/style.scss')
-    .pipe(sourcemaps.init())
     .pipe(sass.sync().on('error', sass.logError))
     .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
-    .pipe(sourcemaps.write('.'))
+    .pipe($.rename('style.min.css'))
     .pipe(gulp.dest('dist'));
+
   return gulp.src('server/src/index.js')
     .pipe($.uglify())
     .pipe($.rename('index.min.js'))
