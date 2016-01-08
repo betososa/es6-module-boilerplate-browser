@@ -39,5 +39,12 @@
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0",
     "watchify": "^3.6.1"
+  },
+  "dependencies": {
+    "backbone": "^1.2.3",
+    "backbone.marionette": "^2.4.4",
+    "handlebars": "^4.0.5",
+    "jquery": "^2.1.4",
+    "underscore": "^1.8.3"
   }
 }

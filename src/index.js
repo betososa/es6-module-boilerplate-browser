@@ -1,7 +1,7 @@
-import { default as dflt } from 'mod/';
+/* globals Marionette */
 
-window.tester = () => {
-  console.log('im the tester');
-};
+Marionette.G4 = Marionette.G4 || {};
 
-window.dflt = dflt;
+Marionette.G4.Popover = Marionette.ItemView.extend({
+  template: require('./template.hbs'),
+});

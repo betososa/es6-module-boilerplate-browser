@@ -5,7 +5,9 @@ const $ = require('gulp-load-plugins')();
 const browserify = require('browserify');
 const watchify = require('watchify');
 const babelify = require('babelify');
-const hbsfy = require('hbsfy');
+const hbsfy = require('hbsfy').configure({
+  compiler: 'Handlebars'
+});
 const source = require('vinyl-source-stream');
 const buffer = require('vinyl-buffer');
 const browserSync = require('browser-sync');

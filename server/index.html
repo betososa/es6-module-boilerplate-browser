@@ -26,10 +26,7 @@
     <script>
       const expect = chai.expect;
       expect(true).to.equal(!!true);
-    </script>
-    <script data-cover-only="src/" src="/vendor/blanket.min.js"></script>
-    <script src="/vendor/mocha-blanket.js"></script>
-    <script>
+
       mocha.setup('bdd');
       mocha.suite.afterAll(function () {
         setTimeout(function () {
@@ -41,8 +38,19 @@
       });
     </script>
 
+    <!-- Dependencies -->
+    <script src="/jquery/dist/jquery.js"></script>
+    <script src="/underscore/underscore.js"></script>
+    <script src="/handlebars/dist/handlebars.runtime.min.js"></script>
+    <script src="/backbone/backbone.js"></script>
+    <script src="/backbone.marionette/lib/backbone.marionette.js"></script>
+
     <!-- Module -->
     <script src="/src/index.js"></script>
+
+    <!-- Coverage -->
+    <script data-cover-flags="commonJS" data-cover-only="src/" data-cover-never="*.hbs" src="/vendor/blanket.min.js"></script>
+    <script src="/vendor/mocha-blanket.js"></script>
 
     <!-- Spec -->
     <script src="/spec/test1.js"></script>
