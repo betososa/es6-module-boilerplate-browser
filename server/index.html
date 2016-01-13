@@ -11,6 +11,22 @@
       .blanket.bl-title {
         display: none;
       }
+      #es-build {
+        position: fixed;
+        top: 10px;
+        left: 5px;
+        height: 16px;
+      }
+      .es-badclass {
+        background: #FF6666;
+        padding: 4px 10px;
+        border-radius: 3px;
+      }
+      .es-goodclass {
+        background: #66FFCC;
+        padding: 4px 10px;
+        border-radius: 3px;
+      }
     </style>
   </head>
   <body>
@@ -18,6 +34,7 @@
     <div id="mocha"></div>
     <div id="messages"></div>
     <div id="fixtures"></div>
+    <div id="es-build"></div>
 
     <!-- Testing framework -->
     <script src="/mocha/mocha.js"></script>
@@ -31,9 +48,10 @@
       mocha.suite.afterAll(function () {
         setTimeout(function () {
           const percent = Number(document.querySelectorAll('.bl-cl.rs')[2].innerHTML.split(' ')[0]);
-          if (percent > 89) {
-            ___browserSync___.socket.emit('build');
-          }
+          ___browserSync___.socket.emit('coverage', percent);
+          ___browserSync___.socket.on('build', function (msg) {
+            document.getElementById('es-build').innerHTML = msg;
+          });
         }, 0);
       });
     </script>

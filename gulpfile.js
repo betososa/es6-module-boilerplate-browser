@@ -15,6 +15,22 @@ const reload = browserSync.reload;
 const del = require('del');
 const sass = require('gulp-sass');
 
+const LOWEST_BUILD_THRESHOLD = 90;
+
+const threshold = (percent, socket) => {
+  const str = 'Coverage is at: ' + percent + '%';
+  if (percent >= LOWEST_BUILD_THRESHOLD) {
+    console.log(str)
+    gulp.start('build');
+    socket.emit('build', '<span class="es-goodclass">was build</span>');
+
+  } else {
+    console.error(new Error(str));
+    console.log('not building dist/');
+    socket.emit('build', '<span class="es-badclass">was not build</span>');
+  }
+};
+
 // Bundle files with browserify
 gulp.task('browserify', () => {
   let bundler = browserify({
@@ -74,8 +90,8 @@ gulp.task('serve', ['browserify', 'sass'], () => {
 
   instance.emitter.on('service:running', function() {
     instance.sockets.on('connection', function(socket) {
-      socket.on('build', function() {
-        gulp.start('build');
+      socket.on('coverage', function (percent) {
+        threshold(percent, socket);
       });
     });
   });
@@ -87,14 +103,17 @@ gulp.watch(['src/**/*.scss',], ['sass']);
 
 // Build distribution
 gulp.task('build', function() {
+  console.log('start building dist/');
 
+  // CSS
   gulp.src('./src/style.scss')
     .pipe(sass.sync().on('error', sass.logError))
     .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
     .pipe($.rename('style.min.css'))
     .pipe(gulp.dest('dist'));
 
-  return gulp.src('server/src/index.js')
+  // JS
+  gulp.src('server/src/index.js')
     .pipe($.uglify())
     .pipe($.rename('index.min.js'))
     .pipe(gulp.dest('dist'));
